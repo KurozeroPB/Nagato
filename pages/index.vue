@@ -1,7 +1,7 @@
 <template>
     <el-container>
         <el-row :gutter="40">
-            <el-col v-for="(project) in projects" :span="8" :key="project.id">
+            <el-col v-for="(project) in projects" :key="project.id" :span="8">
                 <div class="grid-content">
                     <el-card :body-style="{ padding: '0px' }">
                         <img :src="project.image.replace('/static', '')" class="image">
@@ -11,7 +11,13 @@
                             <div class="bottom clearfix">
                                 <p class="short-desc">{{ project.short_desc }}</p>
                                 <time class="time">{{ prettyDate(project.published) }}</time>
-                                <el-button :loading="loading" type="text" style="float: right;" @click="showDialog(project.id)">Read more</el-button>
+                                <el-button
+                                    :loading="loading"
+                                    type="text"
+                                    style="float: right;"
+                                    @click="showDialog(project.id)">
+                                    Read more
+                                </el-button>
                             </div>
                         </div>
                     </el-card>
@@ -38,41 +44,42 @@
 
 <script>
 export default {
-    data() {
-        return {
-            title: 'Kurozero',
-            dialogVisible: false,
-            dialogData: {},
-            loading: false
-        };
+  data() {
+    return {
+        title: "Kurozero",
+        dialogVisible: false,
+        dialogData: {},
+        loading: false
+    };
+  },
+  asyncData({ app, query, error }) {
+    return app.$axios
+      .$get("https://api.kurozeropb.info/v1/projects?project=blog&type=feed")
+      .then((data) => {
+        if (data.statusCode === 200) return { projects: data.results };
+        else error({ statusCode: data.statusCode, message: data.message });
+      }).catch((e) => error(e));
+  },
+  methods: {
+    prettyDate(date) {
+      return new Date(date)
+        .toString()
+        .split(" ")
+        .slice(0, 4)
+        .join(" ")
+        .replace(/( \d+)$/u, ",$1");
     },
-    asyncData ({ app, query, error }) {
-        return app.$axios.$get('https://api.kurozeropb.info/v1/projects?project=blog&type=feed')
-            .then((data) => {
-                if (data.statusCode === 200)
-                    return { projects: data.results };
-                else
-                    error({ statusCode: data.statusCode, message: data.message });
-            }).catch((e) => error(e));
-    },
-    methods: {
-        prettyDate(date) {
-            return new Date(date)
-                .toString()
-                .split(' ')
-                .slice(0, 4)
-                .join(' ')
-                .replace(/( \d+)$/, ',$1');
-        },
-        showDialog(id) {
-            this.loading = true;
-            this.$axios.$get(`https://api.kurozeropb.info/v1/projects?project=blog&type=post&post=${id}`).then((data) => {
-                this.dialogData = data.results[0];
-                this.dialogVisible = true;
-                this.loading = false;
-            }).catch(console.error);
-        }
+    showDialog(id) {
+      this.loading = true;
+      this.$axios
+        .$get(`https://api.kurozeropb.info/v1/projects?project=blog&type=post&post=${id}`)
+        .then((data) => {
+          this.dialogData = data.results[0];
+          this.dialogVisible = true;
+          this.loading = false;
+        }).catch(console.error);
     }
+  }
 };
 </script>
 
@@ -108,7 +115,7 @@ export default {
     .clearfix:before, .clearfix:after
         display: table
         content: ""
-  
+
     .clearfix:after
         clear: both
 

@@ -8,22 +8,32 @@
                         :type-delay="120"
                         :pre-type-delay="250"
                         :erase-delay="120"
-                        :pre-erase-delay="60000" 
+                        :pre-erase-delay="60000"
                         caret-animation="smooth"
                         erase-style="backspace"
-                        class="header-title"/>
+                        class="header-title" />
                 </router-link>
             </h1>
         </el-header>
         <el-main>
-            <nuxt/>
+            <nuxt />
         </el-main>
         <el-footer>
             <div class="footer-center">
                 <div class="footer-buttons">
-                    <a v-for="icon in icons" :key="icon.class" :href="icon.href" target="_blank" class="el-button el-button--default el-button--mini is-circle footer-button"><i :class="icon.class"/></a>
+                    <a
+                        v-for="icon in icons"
+                        :key="icon.class"
+                        :href="icon.href"
+                        target="_blank"
+                        class="el-button el-button--default el-button--mini is-circle footer-button">
+                        <i :class="icon.class" />
+                    </a>
                     <p class="footer-credits">
-                        &copy; {{ new Date().getFullYear() }} — <strong>Kurozero</strong> | Made with <a href="https://vuejs.org/" target="_blank">VueJS</a>, <a href="https://element.eleme.io" target="_blank">ElementUI</a> and <a href="https://nuxtjs.org/" target="_blank">NuxtJS</a>.
+                        &copy; {{ new Date().getFullYear() }} — <strong>Kurozero</strong> | Made with
+                        <a href="https://vuejs.org/" target="_blank">VueJS</a>,
+                        <a href="https://element.eleme.io" target="_blank">ElementUI</a> and
+                        <a href="https://nuxtjs.org/" target="_blank">NuxtJS</a>.
                     </p>
                 </div>
             </div>
@@ -35,14 +45,14 @@
 export default {
     data() {
         return {
-            title: 'Kurozero',
+            title: "Kurozero",
             icons: [
-                { class: 'fab fa-facebook', href: 'https://www.facebook.com/pepijnvdbroek' },
-                { class: 'fab fa-twitter', href: 'https://twitter.com/kurozero_' },
-                { class: 'fab fa-github', href: 'https://github.com/kurozeropb' },
-                { class: 'fab fa-keybase', href: 'https://keybase.io/kurozero' },
-                { class: 'fab fa-discord', href: 'https://discord.gg/p895czC' },
-                { class: 'fab fa-google-play', href: 'https://play.google.com/store/apps/dev?id=4732354838030747081' }
+                { class: "fab fa-facebook", href: "https://www.facebook.com/pepijnvdbroek" },
+                { class: "fab fa-twitter", href: "https://twitter.com/kurozero_" },
+                { class: "fab fa-github", href: "https://github.com/kurozeropb" },
+                { class: "fab fa-keybase", href: "https://keybase.io/kurozero" },
+                { class: "fab fa-discord", href: "https://discord.gg/p895czC" },
+                { class: "fab fa-google-play", href: "https://play.google.com/store/apps/dev?id=4732354838030747081" }
             ]
         };
     }
@@ -94,14 +104,14 @@ export default {
     .el-main
         background-color: #FFF
         color: #333
-    
+
     body > .el-container
         margin-bottom: 40px
-    
+
     .el-container:nth-child(5) .el-aside,
     .el-container:nth-child(6) .el-aside
         line-height: 260px
-    
+
     .el-container:nth-child(7) .el-aside
         line-height: 320px
 
