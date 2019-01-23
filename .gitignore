@@ -62,3 +62,7 @@ typings/
 
 # nuxt
 .nuxt/
+
+
+# Development server
+server/
