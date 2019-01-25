@@ -1,3 +1,5 @@
+const settings = require("./settings.json");
+
 module.exports = {
     mode: "universal",
 
@@ -29,12 +31,17 @@ module.exports = {
     // * Nuxt.js modules
     modules: [
         // Doc: https://github.com/nuxt-community/axios-module#usage
-        "@nuxtjs/axios"
+        "@nuxtjs/axios",
+        "@nuxtjs/google-analytics"
     ],
 
     // * Axios module configuration
     axios: {
         // See https://github.com/nuxt-community/axios-module#options
+    },
+
+    "google-analytics": {
+        id: settings.analytics.id
     },
 
     // * Build configuration
