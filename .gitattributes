@@ -1,2 +1,2 @@
 plugins/*.js linguist-language=Vue
-.eslintrc.js linguist-language=Vue
+nuxt.config.js linguist-language=Vue
