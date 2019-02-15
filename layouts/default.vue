@@ -104,6 +104,7 @@ export default {
     .el-main
         background-color: #FFF
         color: #333
+        overflow: hidden
 
     body > .el-container
         margin-bottom: 40px

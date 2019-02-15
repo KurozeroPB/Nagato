@@ -1,29 +1,24 @@
 <template>
     <el-container>
-        <el-row :gutter="40">
-            <el-col v-for="(project) in projects" :key="project.id" :span="8">
-                <div class="grid-content">
-                    <el-card :body-style="{ padding: '0px' }">
-                        <img :src="project.image.replace('/static', '')" class="image">
-                        <!-- <div class="image" style="text-align: center;"><div style="width: 316.333px; height: 316.333px;">image</div></div> -->
-                        <div class="card-footer" style="padding: 14px;">
-                            <span class="title">{{ project.title }}</span>
-                            <div class="bottom clearfix">
-                                <p class="short-desc">{{ project.short_desc }}</p>
-                                <time class="time">{{ prettyDate(project.published) }}</time>
-                                <el-button
-                                    :loading="loading"
-                                    type="text"
-                                    style="float: right;"
-                                    @click="showDialog(project.id)">
-                                    Read more
-                                </el-button>
-                            </div>
-                        </div>
-                    </el-card>
+        <div class="grid" style="--cols-xl: 3; --cols-lg: 2; --cols-sm: 1;">
+            <div v-for="(project) in projects" :key="project.id" class="card">
+                <div class="card-header" :style="{ 'background-image': 'url(' + project.image.replace('/static', '') + ')' }" />
+                <div class="card-body">
+                    <h4>{{ project.title }}</h4>
+                    <p>{{ project.short_desc }}</p>
                 </div>
-            </el-col>
-        </el-row>
+                <div class="card-footer">
+                    <small><time class="time">{{ prettyDate(project.published) }}</time></small>
+                    <el-button
+                        :loading="loading"
+                        type="text"
+                        style="float: right;"
+                        @click="showDialog(project.id)">
+                        Read more
+                    </el-button>
+                </div>
+            </div>
+        </div>
         <el-dialog :title="dialogData.title" :visible.sync="dialogVisible">
             <el-card :body-style="{ padding: '0px' }" shadow="never" style="border: 0; border-radius: 0;">
                 <el-row :gutter="5">
@@ -84,10 +79,38 @@ export default {
 </script>
 
 <style lang="sass" scoped>
+    small
+        color: #9c9c99
+
     .el-container
         margin-left: auto
         margin-right: auto
         max-width: 45%
+        display: block
+
+    .card
+        min-width: 250px
+        box-shadow: 0 2px 12px 0 rgba(0,0,0,.1)
+        border-radius: 8px
+        margin-left: 10px
+        margin-right: 10px
+
+    .card-header
+        height: 250px
+        background-size: contain
+        background-repeat: no-repeat
+        background-position: center center
+        border-radius: 8px 8px 0 0
+
+    .card-body
+        padding-left: 10px
+        padding-right: 10px
+
+    .card-footer
+        line-height: 2.2;
+        min-height: 3vh
+        padding-left: 10px
+        padding-right: 10px
 
     .el-row, .el-col
         margin-bottom: 20px
@@ -121,10 +144,6 @@ export default {
 
     .description
         line-height: 1.1
-
-    .short-desc
-        line-height: 1.1
-        font-size: 12px
 
     .time
         font-size: 13px
