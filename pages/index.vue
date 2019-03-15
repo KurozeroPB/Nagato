@@ -67,7 +67,7 @@ export default {
     showDialog(id) {
       this.loading = true;
       this.$axios
-        .$get(`${this.$apiUrl}/blog?type=post&post=${id}`)
+        .$get(`${this.$apiUrl}/blog?type=post&id=${id}`)
         .then((data) => {
           this.dialogData = data.results[0];
           this.dialogVisible = true;
