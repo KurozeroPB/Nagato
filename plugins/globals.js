@@ -3,10 +3,10 @@ import Vue from "vue";
 export default (_ctx, inject) => {
     Vue.mixin({
         data() {
-          return {
-            // $apiUrl: "https://api.kurozeropb.info/v1"
-            $apiUrl: "http://api.example.com:8080/v1"
-          };
+            return {
+                // $apiUrl: "https://api.kurozeropb.info/v1"
+                $apiUrl: "http://api.example.com:8080/v1"
+            };
         }
     });
 

@@ -161,6 +161,10 @@ export default {
         font-family: "Exo2-SemiBold"
         src: url(../assets/fonts/exo/Exo2-SemiBold.otf)
 
+    @media only screen and (max-width: 1100px)
+        .el-dialog
+            width: 95%
+
     html
         font-family: "Exo2-Regular"
 

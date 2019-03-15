@@ -39,42 +39,42 @@
 
 <script>
 export default {
-  data() {
-    return {
-        title: "Kurozero",
-        dialogVisible: false,
-        dialogData: {},
-        loading: false
-    };
-  },
-  asyncData({ app, query, error }) {
-    return app.$axios
-      .$get(`${app.$apiUrl}/blog?type=feed`)
-      .then((data) => {
-        if (data.statusCode === 200) return { projects: data.results };
-        else error({ statusCode: data.statusCode, message: data.message });
-      }).catch((e) => error(e));
-  },
-  methods: {
-    prettyDate(date) {
-      return new Date(date)
-        .toString()
-        .split(" ")
-        .slice(0, 4)
-        .join(" ")
-        .replace(/( \d+)$/u, ",$1");
+    data() {
+        return {
+            title: "Kurozero",
+            dialogVisible: false,
+            dialogData: {},
+            loading: false
+        };
     },
-    showDialog(id) {
-      this.loading = true;
-      this.$axios
-        .$get(`${this.$apiUrl}/blog?type=post&id=${id}`)
-        .then((data) => {
-          this.dialogData = data.results[0];
-          this.dialogVisible = true;
-          this.loading = false;
-        }).catch(console.error);
+    asyncData({ app, query, error }) {
+        return app.$axios
+            .$get(`${app.$apiUrl}/blog?type=feed`)
+            .then((data) => {
+                if (data.statusCode === 200) return { projects: data.results };
+                else error({ statusCode: data.statusCode, message: data.message });
+            }).catch((e) => error(e));
+    },
+    methods: {
+        prettyDate(date) {
+            return new Date(date)
+                .toString()
+                .split(" ")
+                .slice(0, 4)
+                .join(" ")
+                .replace(/( \d+)$/u, ",$1");
+        },
+        showDialog(id) {
+            this.loading = true;
+            this.$axios
+                .$get(`${this.$apiUrl}/blog?type=post&id=${id}`)
+                .then((data) => {
+                    this.dialogData = data.results[0];
+                    this.dialogVisible = true;
+                    this.loading = false;
+                }).catch(console.error);
+        }
     }
-  }
 };
 </script>
 
