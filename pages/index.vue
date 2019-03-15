@@ -49,7 +49,7 @@ export default {
   },
   asyncData({ app, query, error }) {
     return app.$axios
-      .$get("https://api.kurozeropb.info/v1/projects?project=blog&type=feed")
+      .$get(`${app.$apiUrl}/blog?type=feed`)
       .then((data) => {
         if (data.statusCode === 200) return { projects: data.results };
         else error({ statusCode: data.statusCode, message: data.message });
@@ -67,7 +67,7 @@ export default {
     showDialog(id) {
       this.loading = true;
       this.$axios
-        .$get(`https://api.kurozeropb.info/v1/projects?project=blog&type=post&post=${id}`)
+        .$get(`${this.$apiUrl}/blog?type=post&post=${id}`)
         .then((data) => {
           this.dialogData = data.results[0];
           this.dialogVisible = true;

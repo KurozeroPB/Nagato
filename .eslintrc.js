@@ -50,10 +50,7 @@ module.exports = {
             }
         ],
         "callback-return": "off",
-        "capitalized-comments": [
-            "error",
-            "always"
-        ],
+        "capitalized-comments": "off",
         "class-methods-use-this": "off",
         "comma-dangle": "error",
         "comma-spacing": [
@@ -333,6 +330,13 @@ module.exports = {
             "error",
             4
         ],
+        "vue/max-attributes-per-line": ["warn", {
+            "singleline": 15,
+            "multiline": {
+                "max": 1,
+                "allowFirstLine": true
+            }
+        }],
         "vue/singleline-html-element-content-newline": "off",
         "wrap-iife": "error",
         "wrap-regex": "error",

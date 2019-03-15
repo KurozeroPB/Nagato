@@ -46,6 +46,7 @@ module.exports = {
     // * Plugins to load before mounting the App
     plugins: [
         { src: "@plugins/element-ui" },
+        { src: "@plugins/globals" },
         { src: "@plugins/vue-typer", ssr: false }
     ],
 
