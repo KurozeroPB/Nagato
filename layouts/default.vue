@@ -61,7 +61,7 @@ export default {
             title: "Kurozero",
             icons: [
                 { class: "fab fa-facebook", href: "https://www.facebook.com/pepijnvdbroek" },
-                { class: "fab fa-twitter", href: "https://twitter.com/kurozero_" },
+                { class: "fab fa-twitter", href: "https://twitter.com/pvdbroek98" },
                 { class: "fab fa-github", href: "https://github.com/kurozeropb" },
                 { class: "fab fa-keybase", href: "https://keybase.io/kurozero" },
                 { class: "fab fa-discord", href: "https://discord.gg/p895czC" },
